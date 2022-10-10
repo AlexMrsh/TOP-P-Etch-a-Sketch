@@ -85,6 +85,9 @@ h1{
 .square{
     width: 32px;
     height: 32px;
+}
+
+.square-grid-lines{
     border: dotted 1px black;
 }
 

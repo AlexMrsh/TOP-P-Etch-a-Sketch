@@ -24,7 +24,6 @@ changeBgColor(backgroundColor);
 
 function changeBgColor(backgroundColor){
     grid.style.backgroundColor = backgroundColor;
-    console.log('ok');
 }
 
 /* Initialize grid */
@@ -65,4 +64,26 @@ colorPickerBackground.addEventListener('change', (e) => {
 const clearGrid = document.getElementById('clear-grid');
 clearGrid.addEventListener('click', ()=>{
     squares.forEach((element) => element.style.backgroundColor = "")
+})
+
+/* Eraser  */
+
+const erase = document.getElementById('eraser');
+erase.addEventListener('click', ()=>{
+    brushColor = '';
+})
+
+/* Toggle grid lines */
+
+const toggleGridLines = document.getElementById('toggle-grid-lines');
+toggleGridLines.addEventListener('click', () => {
+    squares.forEach((element) => element.classList.toggle('square-grid-lines'));
+})
+
+/* Change grid size */
+
+const sizeSlider = document.getElementById('size-slider');
+sizeSlider.addEventListener('change', (e)=>{
+    grid.innerHTML='';
+    setupGrid(e.target.value);
 })
