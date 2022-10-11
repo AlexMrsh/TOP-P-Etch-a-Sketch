@@ -74,21 +74,25 @@ h1{
     margin: 25px;
 }
 
-#grid{
-    display: flex;
+#grid-container{
+    display: grid;
     width: 512px;
     height: 512px;
-    flex-wrap: wrap;
     margin: 0px 150px;
 }
 
-.square{
-    width: 32px;
-    height: 32px;
+#grid-container div{
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .square-grid-lines{
-    border: dotted 1px black;
+    border-top: solid 1px black;
+    border-left: solid 1px black;
+
 }
 
 footer{

@@ -1,7 +1,7 @@
 /* Default values */
 
-const DEFAULT_SIZE = 16;
-const DEFAULT_COLOR_BRUSH = '#fff';
+const DEFAULT_SIZE = 64;
+const DEFAULT_COLOR_BRUSH = '#eee';
 const DEFAULT_COLOR_BACKGROUND = "#444";
 
 /* Adjustable values */
@@ -13,38 +13,38 @@ let backgroundColor = DEFAULT_COLOR_BACKGROUND;
 /* Set default color-picker "color" value in HTML */
 
 const colorPickerBrush = document.getElementById('color-picker-brush');
-colorPickerBrush.setAttribute('color', DEFAULT_COLOR_BRUSH);
+colorPickerBrush.setAttribute('color', brushColor);
 const colorPickerBackground = document.getElementById('color-picker-background');
-colorPickerBackground.setAttribute('color', DEFAULT_COLOR_BACKGROUND);
+colorPickerBackground.setAttribute('color', backgroundColor);
 
 /* Initialize/Change background color */
 
-const grid = document.getElementById('grid');
-changeBgColor(backgroundColor);
+const gridContainer = document.getElementById('grid-container');
 
 function changeBgColor(backgroundColor){
-    grid.style.backgroundColor = backgroundColor;
+    gridContainer.style.backgroundColor = backgroundColor;
 }
 
-/* Initialize grid */
+changeBgColor(backgroundColor);
 
-function setupGrid(size){
-    for(let i = 0; i < size*size; i++){
-        grid.innerHTML += "<div class='square'></div>";
+/* Initialize grid + create square + draw */
+
+function createGrid(gridSizeTmp){
+    for(let i = 0; i < gridSizeTmp*gridSizeTmp; i++){
+        const gridItem = document.createElement('div');
+        gridContainer.style.gridTemplateColumns = `repeat(${gridSizeTmp}, 1fr)`
+        gridContainer.style.gridTemplateRows = `repeat(${gridSizeTmp}, 1fr)`
+        gridContainer.appendChild(gridItem);
     }
+    const squares = gridContainer.querySelectorAll('div');
+    squares.forEach((square) => {
+        square.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = brushColor;
+        });
+    });
 }
 
-setupGrid(gridSize);
-
-/* Change squares color on hover */
-
-const squares = document.querySelectorAll('.square');   //grid is set up then, elements are selected (obviously)
-
-squares.forEach((square) => {
-    square.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = brushColor;
-    });
-});
+createGrid(gridSize);
 
 /* Change brush color */
 
@@ -63,6 +63,7 @@ colorPickerBackground.addEventListener('change', (e) => {
 
 const clearGrid = document.getElementById('clear-grid');
 clearGrid.addEventListener('click', ()=>{
+    const squares = gridContainer.querySelectorAll('div');
     squares.forEach((element) => element.style.backgroundColor = "")
 })
 
@@ -75,15 +76,21 @@ erase.addEventListener('click', ()=>{
 
 /* Toggle grid lines */
 
-const toggleGridLines = document.getElementById('toggle-grid-lines');
-toggleGridLines.addEventListener('click', () => {
+const toggleGridLinesButton = document.getElementById('toggle-grid-lines');
+toggleGridLinesButton.addEventListener('click', () => {
+    const squares = gridContainer.querySelectorAll('div');
     squares.forEach((element) => element.classList.toggle('square-grid-lines'));
 })
 
 /* Change grid size */
 
 const sizeSlider = document.getElementById('size-slider');
-sizeSlider.addEventListener('change', (e)=>{
-    grid.innerHTML='';
-    setupGrid(e.target.value);
+const sizeValue = document.getElementById('size-value');
+
+sizeSlider.value = gridSize;
+sizeValue.innerHTML = sizeSlider.value + " x " + sizeSlider.value;
+sizeSlider.addEventListener('input', (e)=>{
+    gridContainer.innerHTML='';
+    sizeValue.innerHTML = sizeSlider.value + " x " + sizeSlider.value;
+    createGrid(e.target.value);
 })
