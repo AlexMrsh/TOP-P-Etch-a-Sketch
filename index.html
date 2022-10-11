@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+
     <title>TOP Project - Etch-a-Sketch</title>
 </head>
 <body>
@@ -18,8 +27,8 @@
                 <input class="color-picker" id="color-picker-background" name="color-picker-background" type="color" color="" >
                 <label for="color-picker-background">Background color</label>
             </div>
-            <button id="clear-grid">Clear grid</button>
-            <button id="toggle-grid-lines">Toggle grid lines</button>
+            <button class="tools" id="clear-grid">Clear grid</button>
+            <button class="tools" id="toggle-grid-lines">Toggle grid lines</button>
             <div id="size-value"></div>
             <input id="size-slider" type="range" value="16" min="1" max="100">
         </div>
@@ -29,13 +38,14 @@
                 <input class="color-picker" id="color-picker-brush" name="color-picker-brush" type="color" color="">
                 <label for="color-picker-brush">Brush color</label>
             </div>
+            <button class="tools" id="eraser">Eraser</button>
             <button id="fav-color-1"></button>
             <button id="fav-color-2"></button>
             <button id="fav-color-3"></button>
-            <button id="eraser">Eraser</button>
         </div>
     </div>
     <footer>
+        <a href="https://github.com/AlexMrsh">AlexMrsh on GitHub</a>
     </footer>
 </body>
 </html>

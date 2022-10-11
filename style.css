@@ -1,5 +1,7 @@
 *{
     box-sizing: border-box;
+    font-family: 'Silkscreen', cursive;
+    color: aliceblue;
 }
 
 body{
@@ -16,6 +18,10 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #364147;
+    width: 100%;
+    height: 15vh;
+    padding-top: 25px;
 }
 
 h1{
@@ -24,15 +30,15 @@ h1{
 
 .tagline{
     margin: 10px;
-    color: darkslategrey;
-    font-style: italic;
 }
 
 #content{
     display: flex;
     width: 100vw;
+    height: 80vh;
     justify-content: center;
-
+    padding-top: 100px;
+    background-color: #364147;
 }
 
 .color-picker-content{
@@ -52,7 +58,8 @@ h1{
     align-items: center;
 }
 
-#content-left *{
+#content-left *,
+#content-right *{
     margin-bottom: 25px;
 }
 
@@ -62,12 +69,26 @@ h1{
     align-items: center;
 }
 
+#content-left,
+#content-right{
+    width: 200px;
+}
+
+.tools{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 165px;
+    height: 40px;
+    color: #364147;
+}
+
 #fav-color-1,
 #fav-color-2,
 #fav-color-3{
     width: 50px;
     height: 50px;
-    background-color: aqua;
+    background-color: antiquewhite;
     border: solid grey 1px;
     border-radius: 50%;
     box-shadow: 5px 5px 3px grey;
@@ -98,5 +119,14 @@ h1{
 footer{
     height: 5vh;
     width: 100%;
-    background-color: #364147;
+    background-color: aliceblue;
+    color: #364147;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a{
+    color: #364147;
+    text-decoration: none;
 }

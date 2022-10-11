@@ -2,7 +2,7 @@
 
 const DEFAULT_SIZE = 64;
 const DEFAULT_COLOR_BRUSH = '#eee';
-const DEFAULT_COLOR_BACKGROUND = "#444";
+const DEFAULT_COLOR_BACKGROUND = "#555";
 
 /* Adjustable values */
 
@@ -36,6 +36,7 @@ function createGrid(gridSizeTmp){
         gridContainer.style.gridTemplateRows = `repeat(${gridSizeTmp}, 1fr)`
         gridContainer.appendChild(gridItem);
     }
+
     const squares = gridContainer.querySelectorAll('div');
     squares.forEach((square) => {
         square.addEventListener('mouseover', (e) => {
